@@ -1,0 +1,14 @@
+- name: Configuare the MySQL
+  hosts: mysql
+  becomes: true
+  tasks:
+    -name: Install the MySQL Server Libraries
+    ansible.builtin.package:
+      name: mysql-server
+      state: installed
+    
+    - name: start and enable mysql server
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
